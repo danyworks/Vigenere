@@ -1,5 +1,4 @@
-# Vigenere Cipher in go lang
-----------------------------
+
 
 ## Cryptography and cryptanalysis
 ----------------------------
