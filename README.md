@@ -1,117 +1,91 @@
-## Vigenere
-Vigenere Cipher in go lang
+# Vigenere Cipher in go lang
+----------------------------
 
-### Kryptographie und Kryptoanalyse
+## Cryptography and cryptanalysis
+----------------------------
 
-## Kryptographie
+#### Famous Cryptography Methods
+----------------------------
+Code makers are those who use cryptography to hide the meaning of the messages.
 
+####  Cryptography by transposition
+----------------------------
+Transposition is the art of cryptography in which the letter is replaced from its original position. There is no cipher and the plaintext is visible, but the order of the text is messed up.
 
-Code-Maker sind diejenigen, die Kryptographie verwenden, um die Bedeutung der Nachrichten zu verbergen.
+#### Rail Fence Transposition
+----------------------------
+Take the plain text, arrange the alternative letters on a top and a bottom line, the bottom line should be placed at the end of the top line. This transposition method can be modified by dividing the alternating alphabets into more than two lines and joining the lines at the end of the top line.
 
+Example
 
-## Kryptographie durch Transposition:
-Die Transposition ist die Kunst der Kryptographie, bei der der Brief von seiner ursprünglichen Position aus ersetzt wird. Es gibt keine Chiffre und der Klartext ist sichtbar, aber die Reihenfolge des Textes ist durcheinander.
+Plain-text: a quick brown fox
 
-## Rail Fence Transposition:
+Obere Zeile:   A  U  C  B O N O  
+Untere Zeile:    Q  I    K R W F X
 
-Nehmen Sie den Plain-text, ordnen Sie die alternativen Buchstaben auf einer oberen und einer unteren Zeile an, die untere Zeile ist am Ende der oberen Zeile anzubringen. Diese Transposition Methode kann modifiziert werden, indem man die abwechselnd erscheinenden Alphabete in mehr als zwei Zeilen teilt und die Zeilen am Ende der oberen Zeile verbindet.
+verschlüsselter Text: A  U  C  B O N O Q  I   K R W F X
+Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor.
 
-Beispiel
-
-	Plain-text: a quick brown fox
-	
-	Obere Zeile:   A  U  C  B O N O  
-	Untere Zeile:    Q  I    K R W F X
-
-	verschlüsselter Text: A  U  C  B O N O Q  I   K R W F X
+#### Monoalphabetische Substitutions-Digit
+----------------------------
+A substitution cipher that can replace the plain-text letters and assign each plain-text letter to one of the 25 different Caesar cipher alphabets. Monoalphabetic ciphers contain either letters or symbols, or a mixture of both.
 
 Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor.
 
+#### Caesar shift cipher
+----------------------------
+Take the plain text, replace each letter of the plain text with an alphabet that is three places lower in that language's alphabetical order. This means a Caesar shift of 3, and there are 25 different ciphers available.
 
-## Monoalphabetische Substitutions-Chiffre:
+Example:
+Plain Alphabet: A B C D E F G H I J K L M Cipher Alphabet: N O P Q R S T U V W X Y Z
 
-Eine Substitutionschiffre, die die plain-text buchstaben ersetzen und jeden plain-text buchstaben einem der 25 verschiedenen Caesar-Chiffre-Alphabete zuordnen kann.Monoalphabetische Chiffren enthalten entweder Buchstaben oder Symbole oder eine Mischung aus beiden.
-
-Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor.
-
-
-## Cäsar-Verschiebungs-Chiffre:
-Nehmen Sie den Plain-Text, ersetzen Sie jeden Buchstaben des Plain-Textes durch ein Alphabet, das in der alphabetischen Reihenfolge dieser Sprache drei Stellen weiter unten liegt. Dies bedeutet eine Caesar-Verschiebung von 3, und es sind 25 verschiedene Chiffren verfügbar.
-
-Beispiel:    
-Plain Alphabet:	A B C D E F G H   I   J   K L M 
-Cipher Alphabet:     N O P Q R S T U  V  W  X Y Z
-
-Plaintext: 	a  quick     brown   fox    jumps    over   the    lazy    dog
-Cipher-text:	N DHVPX OEBJA SBK WUZCF BIRE GUR YNML QBT
+Plaintext: a quick brown fox jumps over the lazy dog Cipher-text: N DHVPX OEBJA SBK WUZCF BIRE GUR YNML QBT
 
 Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor
 
+#### "Atbash" Hebrew substitution cipher
+----------------------------
+Atbash is a monoalphabetic substitution cipher originally used to encode the Hebrew alphabet.
 
-## "Atbash" Hebräische Substitutions-Chiffre:
+Take a plain text, note the position of each alphabet from the beginning of the alphabet sequence and replace each alphabet with the letter in the same position but from the end of the alphabet sequence
 
-Atbash ist eine monoalphabetische Substitutions-Chiffre, die ursprünglich zur Verschlüsselung des hebräischen Alphabets verwendet wurde.
+Example:
 
-Nehmen Sie einen Klartext, notieren Sie die Position jedes Alphabets vom Anfang der Alphabet Folge und ersetzen Sie jedes Alphabet durch den Buchstaben an der gleichen Position, aber vom Ende der Alphabet Folge
-
-Beispiel:
-
-Plain-Text
-Cipher-Text
-A
-Z
-B
-Y
-C
-X
-D
-W
-E
-V
-F
-U
+Plain-Text Cipher-Text A Z B Y C X D W E V F U
 
 Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor.
 
+#### Homophone Substitutions-Chiffre
+----------------------------
+A number from 0 to 99 is selected as a cipher alphabet to represent an alphabet in plain text. Each letter in plain text is assigned one or more cipher alphabets; the number of cipher alphabets can depend on the frequency of the alphabet in the respective language. We can think of all the two-digit numbers that correspond to the plaintext letter "a" as effectively representing the same sound in the ciphertext. However, many types of such homophone shift ciphers are possible.
 
-## Homophone Substitutions-Chiffre:
-
-Eine Zahl von 0 bis 99 wird als Chiffre-Alphabet ausgewählt, um ein Alphabet im Klartext darzustellen. Jedem Buchstaben im Klartext werden ein oder mehrere Chiffre-Alphabete zugeordnet, die anzahl der Chiffre-Alphabete  von der Häufigkeit des Alphabets in der jeweiligen Sprache abhängen können. Wir können uns alle zweistelligen Zahlen, die dem Klartext Buchstaben "a" entsprechen, so vorstellen, dass sie im Chiffretext effektiv denselben Klang repräsentieren. Es sind aber viele arten von solche Homophon Verschiebechiffren möglich.
-
-
-Homophone Substitutions-Chiffren sind auch eine Art monoalphabetische Chiffren, da jedes Chiffre-Alphabet dem gleichen Alphabet im Klartext entspricht.
+Homophonic substitution ciphers are also a type of monoalphabetic ciphers, since each cipher alphabet corresponds to the same alphabet in plain text.
 
 Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor.
 
-## The Spanish Strip Cipher:
-
-Die spanische Streifen-Chiffre ist eine Variante der homophonen Substitutions-Chiffre, bei der ein Klartext Buchstabe nicht nur ein Chiffretext Zeichen abbildet, wie bei der monoalphabetischen Substitutions-Chiffre, sondern auch mehrere abbilden kann.
+#### The Spanish Strip Cipher
+----------------------------
+The Spanish stripe cipher is a variant of the homophonic substitution cipher, in which a plaintext letter not only represents one ciphertext character, as in the monoalphabetic substitution cipher, but can also represent several.
 
 Referenz: Alberto , L., & Sanguino, B. (2013). Analyzing Spanish Civil War Ciphers by Combining Combinatorial and Statistical Methods.Chair for Embedded Security – Prof. Dr.-Ing. Christof Paar Advisor: Dr. Gregor Leander
 
-## Polyalphabetic Ciphers:
-Eine polyalphabetische Chiffren ordnen jedem plain-text buchstaben mehr als ein Chiffre-Alphabet zu, und auch ein Chiffre-Alphabet könnte zwei verschiedene Buchstaben im gleichen plain-text darstellen.
+#### Polyalphabetic Ciphers
+----------------------------
+A polyalphabetic cipher assigns more than one cipher alphabet to each plain-text letter, and a cipher alphabet could also represent two different letters in the same plain-text.
 
-Beispiel:
-Le Vigenere Cipher
-
-Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor.
-
-## Kryptoanalyse
-
-Code-Knacker sind diejenigen, die die Kryptoanalyse verwenden, um die Bedeutung der Nachrichten aus dem Chiffretext wiederherzustellen.
-Kryptographie kann durch Substitution oder Transposition erreicht werden.
-Die Kryptoanalyse kann durch eine Häufigkeitsanalyse der Buchstaben einer gewissen Sprache erreicht werden. 
-
-
-Anstatt eine Häufigkeitsanalyse für Buchstaben anzuwenden, kann auch die Häufigkeit der im Klartext vorkommenden Silben berücksichtigt werden
-
-
-Ein Digraph ist ein Paar von zwei Buchstaben und im Englischen gibt es 26 Buchstaben, so dass 26*26 =676 verschiedene Paare möglich sind. Die Frequenzanalyse kann auch auf Digraphen angewendet werden. 
-
-
+Example: Le Vigenere Cipher
 
 Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor.
 
+#### Crypto-Analysis
+----------------------------
+
+Code breakers are those who use cryptanalysis to recover the meaning of messages from the ciphertext. Cryptography can be achieved through substitution or transposition. Cryptanalysis can be achieved by frequency analysis of the letters of a certain language.
+
+Instead of using frequency analysis for letters, the frequency of syllables occurring in plain text can also be taken into account
+
+A digraph is a pair of two letters and in English there are 26 letters, so 26*26 =676 different pairs are possible. Frequency analysis can also be applied to digraphs.
+
+Referenz: Singh, S. (2009). The code book: the science of secrecy from ancient Egypt to quantum cryptography (1st ed.). Bridgewater, NJ: Distributed by Paw Prints / Baker & Taylor.
 
 
